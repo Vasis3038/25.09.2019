@@ -46,6 +46,9 @@ vector <vector<int> > from_ms_to_ss(vector< vector<int> > ms)// аргумент
     }
     return ss;
 }
+
+
+
 vector <vector<int> > from_ss_to_mi(vector< vector<int> > ss)// аргумент функци- список смежности, функция возвращает матрицу инцидентности
 {
     int n = ss.size()+1, nom=0;
@@ -111,6 +114,65 @@ vector <vector<int> > from_mi_to_sr(vector< vector<int> > mi)// аргумент
     }
     return sr;
 }
+vector <vector<int> > from_sr_to_ss(vector< vector<int> > sr)
+{
+    vector < vector <int> > n, i;
+    n = from_sr_to_ms(sr);
+    i = from_ms_to_ss(n);
+    return i;
+}
+vector <vector<int> > from_sr_to_mi(vector< vector<int> > sr)
+{
+    vector < vector <int> > n, i;
+    n = from_sr_to_ss(sr);
+    i = from_ss_to_mi(n);
+    return i;
+    
+}
+vector <vector<int> > from_ms_to_mi(vector< vector<int> > ms)
+{
+    vector < vector <int> > n, i;
+    n = from_ms_to_ ss(ms);
+    i = from_ss_to_mi(n);
+    return i;
+}
+vector <vector<int> > from_ss_to_sr(vector< vector<int> > ss)
+{
+    vector < vector <int> > n, i;
+    n = from_ss_to_ mi(ss);
+    i = from_mi_to_sr(n);
+    return i;
+}
+vector <vector<int> > from_ss_to_ms(vector< vector<int> > ss)
+{
+     vector < vector <int> > n, i;
+    n = from_ss_to_ sr(ms);
+    i = from_sr_to_ms(n);
+    return i;
+}
+vector <vector<int> > from_mi_to_ms(vector< vector<int> > mi)
+{
+    vector < vector <int> > n, i;
+    n = from_mi_to_ sr(ms);
+    i = from_sr_to_ms(n);
+    return i;
+}
+vector <vector<int> > from_mi_to_ss(vector< vector<int> > mi)
+{
+        vector < vector <int> > n, i;
+    n = from_mi_to_ ms(ms);
+    i = from_ms_to_ss(n);
+    return i;
+}
+vector <vector<int> > from_ms_to_sr(vector< vector<int> > mi)
+{
+    vector < vector <int> > n, i;
+    n = from_ms_to_ mi(ms);
+    i = from_mi_to_sr(n);
+    return i;
+}
+
+
 int main()
 {
 //пример перевода списка ребер в матрицу смежности
